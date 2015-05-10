@@ -7,9 +7,8 @@ class LfDatabase
 {
 	private static $pdo;
 	static function Init()
-	{	
-		require str_replace('system/','', BASEPATH).'application/config/database.php';
-		self::$pdo=new PDO(sprintf('mysql:host=%s;dbname=%s;charset=utf8',$db['default']['hostname'],$db['default']['database']),$db['default']['username'],$db['default']['password']);
+	{
+		self::$pdo=new PDO(sprintf('mysql:host=%s;dbname=%s;charset=utf8',DB_HOSTNAME,DB_DATABASE),DB_USERNAME,DB_PASSWORD);
 		self::$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 		self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
