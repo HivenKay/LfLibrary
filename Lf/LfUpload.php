@@ -1,23 +1,23 @@
 <?php
-define('filepath', DIR_APPLICATION);
-class LfUpload {
-	protected $allowExt = array('jpg', 'jpeg', 'doc', 'docx', 'png', 'exel', 'ppt', 'zip', 'pdf', 'rp');
-	protected $allowSize = 100; // 最大上传大小,单位为M
+define('filepath', str_replace('/system', '', BASEPATH));
+class LfUpload{
+	protected $allowExt  = array('jpg', 'jpeg', 'doc','docx', 'png', 'exel','ppt','zip', 'pdf','rp');
+	protected $allowSize = 100;// 最大上传大小,单位为M
 	private $path;
 	private $img_r_all;
 	protected $errno = 0;
 	protected $error = array(
-		0 => '上传完成',
-		1 => '文件超出upload_max_filesize',
-		2 => '文件超出表单中 MAX_FILE_SIZE 选项指定的值',
-		3 => '文件只有部分被上传',
-		4 => '没有文件被上传',
-		6 => '找不到临时目录',
-		7 => '文件定入失败',
-		8 => '文件大小超出配置文件的限制',
-		9 => '不允许的文件类型',
+		0  => '上传完成',
+		1  => '文件超出upload_max_filesize',
+		2  => '文件超出表单中 MAX_FILE_SIZE 选项指定的值',
+		3  => '文件只有部分被上传',
+		4  => '没有文件被上传',
+		6  => '找不到临时目录',
+		7  => '文件定入失败',
+		8  => '文件大小超出配置文件的限制',
+		9  => '不允许的文件类型',
 		10 => '创建目录失败',
-		11 => '未知错误,反思中',
+		11 => '未知错误,反思中'
 	);
 	function __construct($path) {
 		$this->path = $path;
@@ -35,12 +35,12 @@ class LfUpload {
 
 	// 检验大小in
 	protected function checkSize($size) {
-		return $size <= $this->allowSize * 1000 * 1000;
+		return $size <= $this->allowSize*1000*1000;
 	}
 
 	// 按日期生成目录
 	protected function mk_dir() {
-		$dir = filepath . $this->path;
+		$dir = filepath.$this->path;
 		if (!is_dir($dir)) {
 			if (!mkdir($dir, 0777, true)) {
 				return false;
@@ -62,7 +62,7 @@ class LfUpload {
 		return $str;
 	}
 
-	public function upload($name) {
+	public function upload($name, $Params) {
 		// $_FILES里面有没有$name指定的单元
 		if (!isset($_FILES[$name])) {
 			return false;

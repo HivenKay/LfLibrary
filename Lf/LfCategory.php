@@ -1,12 +1,12 @@
 <?php
-class LfCategory {
+class LfCategory{
 	/*
-	 *传入所有栏目的数组
-	 *$level为当前栏目的级数
-	 *$html加在栏目名前，显示栏目分级效果
-	 *返回组合后的数组
-	 */
-	static function UnLevelCate($data = array(), $pid = 0, $html = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', $level = 0) {
+	*传入所有栏目的数组
+	*$level为当前栏目的级数
+	*$html加在栏目名前，显示栏目分级效果
+	*返回组合后的数组
+	*/
+	static function UnLevelCate($data = array(), $pid = 0, $html = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', $level = 0){
 		$arr = array();
 		foreach ($data as $v) {
 			if ($v['Pid'] == $pid) {
@@ -46,10 +46,11 @@ class LfCategory {
 		return $arr;
 
 	}
-	static function GetParentByPid($data, $pid) {
+	static	function GetParentByPid($data, $pid)
+	{
 		$arr = array();
 		foreach ($data as $v) {
-			if ($v['CateName'] == '学院首页') {
+			if($v['CateName']=='学院首页'){
 				continue;
 			}
 			if ($v['Id'] == $pid) {

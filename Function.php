@@ -219,6 +219,7 @@ function ArrayUnique($arr, $key)
     	$arr=array_values($rAr);
     	return $arr;
 }
+<<<<<<< HEAD
 function redirect($url, $time=0, $msg='') {
 	//多行URL地址支持
 	$url        = str_replace(array("\n", "\r"), '', $url);
@@ -240,3 +241,5 @@ function redirect($url, $time=0, $msg='') {
 		exit($str);
 	}
 }
+=======
+>>>>>>> 9ffa8d2fb828329302d2bb5439b01221338041fa
