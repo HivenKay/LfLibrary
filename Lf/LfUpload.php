@@ -1,7 +1,7 @@
 <?php
-define('filepath',DIR_APPLICATION);
+define('filepath', str_replace('/system', '', BASEPATH));
 class LfUpload{
-	protected $allowExt  = array('jpg', 'jpeg', 'doc','docx', 'png', 'xls','xlsx','ppt','zip', 'pdf','rp');
+	protected $allowExt  = array('jpg', 'jpeg', 'doc','docx', 'png', 'exel','ppt','zip', 'pdf','rp');
 	protected $allowSize = 100;// 最大上传大小,单位为M
 	private $path;
 	private $img_r_all;
@@ -62,7 +62,7 @@ class LfUpload{
 		return $str;
 	}
 
-	public function upload($name) {
+	public function upload($name, $Params) {
 		// $_FILES里面有没有$name指定的单元
 		if (!isset($_FILES[$name])) {
 			return false;
@@ -96,33 +96,33 @@ class LfUpload{
 		}
 
 		$filename = $this->randName(9);
-		$path     = $path.'/'.$filename.$ext;
+		$path = $path . '/' . $filename . $ext;
 
-		if(!move_uploaded_file($f['tmp_name'],$path)){
-			$this->error=11;
+		if (!move_uploaded_file($f['tmp_name'], $path)) {
+			$this->error = 11;
 			return false;
 		}
 //		// 剪裁图片
-//		$targ_w = 700;
-//		$targ_h = 300;
-//
-//		$sw = $Params['sw'];
-//		$sh = $Params['sh'];
-//		$dx = $Params['dx'];
-//		$dy = $Params['dy'];
-//		$dw = $Params['dw'];
-//		$dh = $Params['dh'];
-//
-//		$src = $f['tmp_name'];
-//
-//		$img_r = imagecreatefromjpeg($src);
-//		$dst_r = imagecreatetruecolor($targ_w, $targ_h);
-//		imagecopyresampled($dst_r, $img_r, $dx-361, $dy, 0, 0, $dw, $dh, $sw, $sh);
-//
-//		if(!imagejpeg($dst_r, $path, 100)) {
-//			$this->errno = 11;
-//			return false;
-//		}
+		//		$targ_w = 700;
+		//		$targ_h = 300;
+		//
+		//		$sw = $Params['sw'];
+		//		$sh = $Params['sh'];
+		//		$dx = $Params['dx'];
+		//		$dy = $Params['dy'];
+		//		$dw = $Params['dw'];
+		//		$dh = $Params['dh'];
+		//
+		//		$src = $f['tmp_name'];
+		//
+		//		$img_r = imagecreatefromjpeg($src);
+		//		$dst_r = imagecreatetruecolor($targ_w, $targ_h);
+		//		imagecopyresampled($dst_r, $img_r, $dx-361, $dy, 0, 0, $dw, $dh, $sw, $sh);
+		//
+		//		if(!imagejpeg($dst_r, $path, 100)) {
+		//			$this->errno = 11;
+		//			return false;
+		//		}
 
 		$path = str_replace(filepath, '', $path);
 		return $path;
