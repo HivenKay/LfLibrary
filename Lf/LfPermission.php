@@ -1,6 +1,6 @@
 <?php
-class LfPermission{
-	static function isPermission($cateId,$uid){
+class LfPermission {
+	static function isPermission($cateId, $uid) {
 
 	}
 }

@@ -5,7 +5,6 @@
  * Date: 15/9/30
  * Time: 上午10:55
  */
-require_once '../Lf/Excel/ExcelUnits.php';
 class LfExcelReader {
     static function ReadExcel($FilePath) {
         $ExcelUnit = new ExcelUnits();

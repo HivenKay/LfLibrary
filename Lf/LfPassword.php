@@ -7,13 +7,13 @@
  */
 
 class LfPassword {
-	static function CreateSalt(){
+	static function CreateSalt() {
 		return substr(md5(uniqid(rand(), true)), 0, 9);
 	}
-	static function PasswordHash($salt,$password){
+	static function PasswordHash($salt, $password) {
 		return sha1($salt . sha1($salt . sha1($password)));
 	}
-	static function PasswordVerify($salt,$password,$hash){
-		return $hash==self::PasswordHash($salt,$password);
+	static function PasswordVerify($salt, $password, $hash) {
+		return $hash == self::PasswordHash($salt, $password);
 	}
 }
