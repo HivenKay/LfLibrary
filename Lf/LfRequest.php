@@ -87,7 +87,7 @@ class LfRequest{
 	 * @lastmodify    2014-04-09
 	 * @return  BOOL
 	 */
-	static function checkmobile() {
+	static function isMobile() {
 		global $_G;
 		$mobile = array();
 		//各个触控浏览器中$_SERVER['HTTP_USER_AGENT']所包含的字符串数组
@@ -165,6 +165,13 @@ class LfRequest{
         curl_close($curl);
         return $output;
     }
+    static function isWeixinBrowser() {
+		$agent = $_SERVER ['HTTP_USER_AGENT'];
+		if (! strpos ( $agent, "icroMessenger" )) {
+			return false;
+		}
+		return true;
+	}
 
 
 }

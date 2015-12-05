@@ -46,7 +46,7 @@ function hurl($s){
 */
 function IsActive($name='',$active){
 	if($name==$active){
-		return 'class="active"';
+		return 'active';
 	}else{
 		return '';
 	}
@@ -219,27 +219,3 @@ function ArrayUnique($arr, $key)
     	$arr=array_values($rAr);
     	return $arr;
 }
-<<<<<<< HEAD
-function redirect($url, $time=0, $msg='') {
-	//多行URL地址支持
-	$url        = str_replace(array("\n", "\r"), '', $url);
-	if (empty($msg))
-		$msg    = "系统将在{$time}秒之后自动跳转到{$url}！";
-	if (!headers_sent()) {
-		// redirect
-		if (0 === $time) {
-			header('Location: ' . $url);
-		} else {
-			header("refresh:{$time};url={$url}");
-			echo($msg);
-		}
-		exit();
-	} else {
-		$str    = "<meta http-equiv='Refresh' content='{$time};URL={$url}'>";
-		if ($time != 0)
-			$str .= $msg;
-		exit($str);
-	}
-}
-=======
->>>>>>> 9ffa8d2fb828329302d2bb5439b01221338041fa
