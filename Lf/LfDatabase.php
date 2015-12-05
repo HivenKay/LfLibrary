@@ -8,7 +8,7 @@ class LfDatabase
 	private static $pdo;
 	static function Init()
 	{
-		self::$pdo=new PDO(sprintf('mysql:host=%s;dbname=%s;charset=utf8',DB_HOSTNAME,DB_DATABASE),DB_USERNAME,DB_PASSWORD);
+		self::$pdo=new PDO(sprintf('mysql:host=%s;dbname=%s;charset=utf8','localhost',LfConfig::$DbDatabase),LfConfig::$DbUserName,LfConfig::$DbPassword);
 		self::$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 		self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}

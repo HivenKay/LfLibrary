@@ -3,7 +3,7 @@
 * 生成日志文件
 * 需要先定义日志文件路径；
 */
-class Log
+class LfDebug
 {
 //	public $LogPath
 	static function log($obj,$LogPath)

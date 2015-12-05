@@ -30,8 +30,26 @@ static function FileInDir($dir){
 *传入文件名，返回文件的后缀
 */
 static function getExt($file) {
-	$ext = strtolower(strrchr($file, '.'));
-
+	$ext = substr(strtolower(strrchr($file, '.')),1);
 	return $ext;
+}
+static function searchDir($path,&$data){
+    if(is_dir($path)){
+        $dp=dir($path);
+        while($file=$dp->read()){
+            if($file!='.'&& $file!='..'){
+                searchDir($path.'/'.$file,$data);
+            }
+        }
+        $dp->close();
+    }
+    if(is_file($path)){
+        $data[]=$path;
+    }
+}
+static function getDir($dir){
+    $data=array();
+    searchDir($dir,$data);
+    return   $data;
 }
 }

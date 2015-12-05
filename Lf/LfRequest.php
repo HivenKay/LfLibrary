@@ -165,6 +165,13 @@ class LfRequest{
         curl_close($curl);
         return $output;
     }
+    static function isWeixinBrowser() {
+		$agent = $_SERVER ['HTTP_USER_AGENT'];
+		if (! strpos ( $agent, "icroMessenger" )) {
+			return false;
+		}
+		return true;
+	}
 
 
 }
